@@ -11,8 +11,8 @@
 
 
 # time is the time step (defined as a numeric vector)
-# stocks refer to N pools (defined as a named numeric vector; e.g., sNrec, sNlab, sNH4 below)
-# parms for parameter set (defined as a named numeric vector; e.g., kmin_zero, kminfast, kONH4) 
+# stocks refer to N pools (defined as a named numeric vector, including, e.g., sNrec, sNlab, sNH4 below)
+# parms for parameter set (defined as a named numeric vector, including, e.g., kmin_zero, kminfast, kONH4 below) 
 NtraceNitriteR <- function(time, stocks, parms) { 
   with(as.list(c(stocks, parms)), {
 
@@ -208,8 +208,6 @@ NtraceNitriteR <- function(time, stocks, parms) {
                 fRNO2het = fRNO2het,
                 fRNO2nit = fRNO2nit,
                 fRNO2cnd = fRNO2cnd,
-                fiNH4_Nrec_14N = fiNH4_Nrec_14N,
-                fiNH4_Nrec_15N = fiNH4_Nrec_15N,
                 grossMin = grossMin,
                 grossImb = grossImb,
                 grossP_NH4 = grossP_NH4,
