@@ -11,8 +11,8 @@
 
 
 # time is the time step (defined as a numeric vector)
-# stocks refer to N pools (defined as a named numeric vector, including, e.g., sNrec, sNlab, sNH4 below)
-# parms for parameter set (defined as a named numeric vector, including, e.g., kmin_zero, kminfast, kONH4 below) 
+# stocks refer to the N pools (defined as a named numeric vector, including, e.g., sNrec, sNlab, sNH4 below)
+# parms for the parameter set (defined as a named numeric vector, including, e.g., kmin_zero, kminfast, kONH4 below) 
 NtraceNitriteR <- function(time, stocks, parms) { 
   with(as.list(c(stocks, parms)), {
 
@@ -60,49 +60,49 @@ NtraceNitriteR <- function(time, stocks, parms) {
        
     # define the derivatives 
 
-    # NH4 pool
+    # the NH4 pool
     ddt_NH4_14N  <- fMinzero_14N + fMinfast_14N - fONH4_14N  + 
       fads_NH4_14N - fiNH4_14N  - fcomammox_14N - fiNH4_Nrec_14N + fDNRA_14N
     ddt_NH4_15N  <- fMinzero_15N + fMinfast_15N - fONH4_15N  + 
       fads_NH4_15N - fiNH4_15N  - fcomammox_15N - fiNH4_Nrec_15N + fDNRA_15N
 
-    # NO2nit pool
+    # the NO2nit pool
     ddt_NO2nit_14N <- fONH4_14N - fONO2_14N - fRNO2nit_14N
     ddt_NO2nit_15N <- fONH4_15N - fONO2_15N - fRNO2nit_15N 
     
-    # NO2den pool
+    # the NO2den pool
     ddt_NO2den_14N <- fRNO3den_14N - fRNO2den_14N - fONO2den_14N - fDNRA_14N
     ddt_NO2den_15N <- fRNO3den_15N - fRNO2den_15N - fONO2den_15N - fDNRA_15N
     
-    # NO2het pool
+    # the NO2het pool
     ddt_NO2het_14N <- fhetnit_14N - fRNO2het_14N
     ddt_NO2het_15N <- fhetnit_15N - fRNO2het_15N
     
-    # NO2cnd pool
+    # the NO2cnd pool
     ddt_NO2cnd_14N <- fRNO3nit_14N - fRNO2cnd_14N
     ddt_NO2cnd_15N <- fRNO3nit_15N - fRNO2cnd_15N
     
-    # NO3nit pool
+    # the NO3nit pool
     ddt_NO3nit_14N <- fONO2_14N - fiNO3_14N - fRNO3nit_14N + fONO2den_14N + fcomammox_14N 
     ddt_NO3nit_15N <- fONO2_15N - fiNO3_15N - fRNO3nit_15N + fONO2den_15N + fcomammox_15N 
     
-    # NO3den pool
+    # the NO3den pool
     ddt_NO3den_14N <- -fRNO3den_14N
     ddt_NO3den_15N <- -fRNO3den_15N
     
-    # Nlab pool
+    # the Nlab pool
     ddt_Nlab_14N <- -fMinfast_14N + fiNH4_14N 
     ddt_Nlab_15N <- -fMinfast_15N + fiNH4_15N 
     
-    # Nrec pool
+    # the Nrec pool
     ddt_Nrec_14N <- -fMinzero_14N + fiNO3_14N - fhetnit_14N  + fiNH4_Nrec_14N  
     ddt_Nrec_15N <- -fMinzero_15N + fiNO3_15N - fhetnit_15N  + fiNH4_Nrec_15N  
     
-    # NH4ads pool
+    # the NH4ads pool
     ddt_NH4ads_14N <- -fads_NH4_14N 
     ddt_NH4ads_15N <- -fads_NH4_15N 
     
-    # Ngas pool
+    # the Ngas pool
     ddt_Ngas_14N <- fRNO2nit_14N + fRNO2den_14N + fRNO2het_14N + fRNO2cnd_14N
     ddt_Ngas_15N <- fRNO2nit_15N + fRNO2den_15N + fRNO2het_15N + fRNO2cnd_15N
     
