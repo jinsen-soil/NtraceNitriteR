@@ -105,8 +105,8 @@ mod.NO2Trace <- function(time,      # time step; a numeric vector
     ddt_NH4ads_14N <- -fads_NH4_14N + fiads_NH4_14N
     ddt_NH4ads_15N <- -fads_NH4_15N + fiads_NH4_15N
     # Ngas pool
-    ddt_Ngas_14N <- fRNO2nit_14N + fRNO2den_14N + fRNO2het_14N + fRNO2cnd_14N #
-    ddt_Ngas_15N <- fRNO2nit_15N + fRNO2den_15N + fRNO2het_15N + fRNO2cnd_15N #
+    ddt_Ngas_14N <- fRNO2nit_14N + fRNO2den_14N + fRNO2het_14N + fRNO2cnd_14N
+    ddt_Ngas_15N <- fRNO2nit_15N + fRNO2den_15N + fRNO2het_15N + fRNO2cnd_15N
     
     # calculate other outputs
     sNH4 = sNH4_14N + sNH4_15N
@@ -151,7 +151,7 @@ mod.NO2Trace <- function(time,      # time step; a numeric vector
     fONO2den = fONO2den_14N + fONO2den_15N
     
     # calculate gross rates
-    grossMin = fMin_Nlab + fMin_Nrec  # only consdier the fast the slow ammonification from Nrec here    
+    grossMin = fMin_Nlab + fMin_Nrec  # only consdier the fast the slow ammonification from organic N here    
     grossImb = fiNH4_Nlab + fiNH4_Nrec # only consider the immobilization of NH4 here
     
     grossP_NH4 = fMin_Nlab +fMin_Nrec + fNH4ads + fDNRA   
