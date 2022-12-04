@@ -62,8 +62,7 @@ mod.NO2Trace <- function(time,      # time step; a numeric vector
     fRNO3den_15N = kRNO3den*sNO3den_15N
     fRNO2cnd_15N = kRNO2cnd*sNO2cnd_15N
     fONO2den_15N = kONO2den*sNO2den_15N
-    
-    
+   
     
     # define the derivatives 
     # NH4 pool
@@ -73,40 +72,51 @@ mod.NO2Trace <- function(time,      # time step; a numeric vector
     ddt_NH4_15N <- fMin_Nrec_15N + fMin_Nlab_15N - fiNH4_Nrec_15N - 
       fONH4_15N + fads_NH4_15N - fiNH4_Nlab_15N - fiads_NH4_15N +
       fDNRA_15N - fcomammox_15N
+    
     # NO2nit pool
     ddt_NO2nit_14N <- fONH4_14N - fONO2nit_14N - fRNO2nit_14N
     ddt_NO2nit_15N <- fONH4_15N - fONO2nit_15N - fRNO2nit_15N
+    
     # NO2den pool
     ddt_NO2den_14N <- fRNO3den_14N - fRNO2den_14N - fDNRA_14N - fONO2den_14N 
     ddt_NO2den_15N <- fRNO3den_15N - fRNO2den_15N - fDNRA_15N - fONO2den_15N 
+    
     # NO2het pool
     ddt_NO2het_14N <- fhetnit_14N - fRNO2het_14N
     ddt_NO2het_15N <- fhetnit_15N - fRNO2het_15N
+    
     # NO2cnd pool
     ddt_NO2cnd_14N <- fRNO3nit_14N - fRNO2cnd_14N
     ddt_NO2cnd_15N <- fRNO3nit_15N - fRNO2cnd_15N
+    
     # NO3 pool
     ddt_NO3nit_14N <- fONO2nit_14N - fRNO3nit_14N + fONrec_NO3_14N - fiNO3_Nrec_14N + 
       fcomammox_14N + fONlab_NO3_14N - fiNO3_Nlab_14N + fONO2den_14N  
     ddt_NO3nit_15N <- fONO2nit_15N - fRNO3nit_15N + fONrec_NO3_15N - fiNO3_Nrec_15N +
-      fcomammox_15N + fONlab_NO3_15N - fiNO3_Nlab_15N + fONO2den_15N   
+      fcomammox_15N + fONlab_NO3_15N - fiNO3_Nlab_15N + fONO2den_15N  
+    
     # NO3den pool
     ddt_NO3den_14N <- -fRNO3den_14N
     ddt_NO3den_15N <- -fRNO3den_15N
+    
     # Nlab pool
     ddt_Nlab_14N <- fiNH4_Nlab_14N - fONlab_NO3_14N + -fMin_Nlab_14N + 
       fiNO3_Nlab_14N 
     ddt_Nlab_15N <- fiNH4_Nlab_15N - fONlab_NO3_15N + -fMin_Nlab_15N + 
       fiNO3_Nlab_15N 
+    
     # Nrec pool
     ddt_Nrec_14N <- -fMin_Nrec_14N - fhetnit_14N  + fiNH4_Nrec_14N + fiNO3_Nrec_14N - fONrec_NO3_14N 
     ddt_Nrec_15N <- -fMin_Nrec_15N - fhetnit_15N  + fiNH4_Nrec_15N + fiNO3_Nrec_15N - fONrec_NO3_15N 
+    
     # NH4ads pool
     ddt_NH4ads_14N <- -fads_NH4_14N + fiads_NH4_14N
     ddt_NH4ads_15N <- -fads_NH4_15N + fiads_NH4_15N
+    
     # Ngas pool
     ddt_Ngas_14N <- fRNO2nit_14N + fRNO2den_14N + fRNO2het_14N + fRNO2cnd_14N
     ddt_Ngas_15N <- fRNO2nit_15N + fRNO2den_15N + fRNO2het_15N + fRNO2cnd_15N
+    
     
     # calculate other outputs
     sNH4 = sNH4_14N + sNH4_15N
