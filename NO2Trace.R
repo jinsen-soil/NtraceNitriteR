@@ -1,5 +1,5 @@
 # by Jinsen Zheng @ FFPRI 
-# 202201127
+# 20221127
 # The following R code describes a new numerical model framework built on the 
 # structure of the published one (NtraceNitrite by Rutting and Muller, 2008) 
 # for simulating the soil nitrite dynamics. 
